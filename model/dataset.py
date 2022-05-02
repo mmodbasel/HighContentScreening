@@ -106,7 +106,7 @@ class CustomDataset(Dataset):
 		# Read the SMILES file and generate fingerprints
 		# for each SMILES if necessary
 		self.smiles, self.names, self.fprints = [], [], []
-		self.loadFingerprints()		
+		self.loadFingerprints(input_file, quiet=quiet)		
 
 		if most_similar_file == "":
 			self.most_similar = []
@@ -116,7 +116,7 @@ class CustomDataset(Dataset):
 			self.precomputed_similarities = True
 
 
-	def loadFingerprints(self, header=False):
+	def loadFingerprints(self, input_file, quiet=False, header=False):
 		if self.fprint_file == "":
 			# Get the number of lines in the file 
 			# (only for tracking progress)

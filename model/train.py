@@ -29,7 +29,6 @@ def parse_arguments():
 	parser.add_argument('--fingerprints', '-f', type=str, default="", help='fingerprints of the input smiles (pickled, default: None)')
 	parser.add_argument('--precomputed_similarities', '-r', type=str, default="", help='file containing precomputed similarities (n most similar) (pickled, default: None)')
 	parser.add_argument('--lr', type=float, default=1e-4, help='learning rate (default: 1e-4)')
-	parser.add_argument('--scheduler', type=float, default=-1., help='factor for the learning rate scheduler (default: None)')
 	parser.add_argument('--processes', '-p', type=int, default=4, help='number of processes for batch loading (default: 4)')
 	parser.add_argument('--quiet', '-q', default=False, action='store_true', help='write output to a log file rather than stdout (default: False)')
 	return parser.parse_args()
@@ -134,7 +133,6 @@ def main():
 		save_last=True
 	)
 	trainer = pl.Trainer(
-		gpus=[1], 
 		replace_sampler_ddp=False, 
 		accelerator='dp',
 		log_every_n_steps=50,
