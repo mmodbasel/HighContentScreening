@@ -15,7 +15,7 @@ except ValueError:
 	print(f"[-] \"{n_most_similar}\" is an invalid option for the number of most similar compounds")
 	exit()
 
-fprints = pickle.load(open(data_file, "rb"))
+_, _, fprints = pickle.load(open(data_file, "rb"))
 most_similar = []
 for fprint in fprints:
 	similarities = np.array(DataStructs.BulkTanimotoSimilarity(fprint, fprints))
