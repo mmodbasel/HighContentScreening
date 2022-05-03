@@ -132,7 +132,9 @@ def main():
 		filename="validation_loss-{epoch}",
 		save_last=True
 	)
+	n_gpus = 1 if torch.cuda.is_available() else 0
 	trainer = pl.Trainer(
+		gpus=1,
 		replace_sampler_ddp=False, 
 		accelerator='dp',
 		log_every_n_steps=50,
@@ -151,8 +153,6 @@ def main():
 
 
 if __name__ == '__main__':
-	environ['CUDA_DEVICE_ORDER'] = 'PCI_BUS_ID'
-	environ['CUDA_LAUNCH_BLOCKING'] = '1'
 	try:
 		main()
 	except KeyboardInterrupt:

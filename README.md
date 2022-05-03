@@ -28,6 +28,7 @@ python create_fingerprints.py dataset.smi
 python precompute_most_similar.py dataset_fprints.pk 100
 ```
 Where the arguments for `precompute_most_similar.py` are a pickled list containing the fingerprints of the compounds in the dataset and the number of most similar compounds to store for each reference compound.
+
 **Note:** Depending on the size of the dataset and the available resources, these processes may take a very long time.
 
 ## Training
