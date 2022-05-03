@@ -18,10 +18,10 @@ def parse_arguments():
 	"""
 	parser = argparse.ArgumentParser(description='Hyperparams')
 	parser.add_argument('--jobname', '-j', type=str, default="run", help='jobname of the training (default: run)')
-	parser.add_argument('--epochs', '-e', type=int, default=10, help='number of epochs (default: 10)')
+	parser.add_argument('--epochs', '-e', type=int, default=1000, help='number of epochs (default: 1000)')
 	parser.add_argument('--input', '-i', type=str, default='smiles.smi', help='input smiles file (default: smiles.smi)')
 	parser.add_argument('--out_dir', '-o', type=str, default='output/', help='output directory (default: output/)')
-	parser.add_argument('--batch_size', '-b', type=int, default=64, help='batch size (default: 64)')
+	parser.add_argument('--batch_size', '-b', type=int, default=128, help='batch size (default: 128)')
 	parser.add_argument('--hidden_dims', type=int, default=256, help='number of hidden dimensions (default: 256)')
 	parser.add_argument('--n_layers', '-l', type=int, default=4, help='number of layers (default: 4)')
 	parser.add_argument('--n_heads', '-n', type=int, default=4, help='number of attention heads (default: 4)')
