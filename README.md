@@ -15,7 +15,7 @@ Alternatively, you can use the `environment.yml` file to create a conda environm
 conda env create -f environment.yml
 conda activate HighContentScreening
 ```
-**Important:** PyTorch will not be installed automatically. You can find the correct version for your CUDA installation [here](https://pytorch.org/get-started/locally/). Also, you have to manually install the correct version of faiss for your system (regular installation: `pip install faiss`, CPU-only version: `pip install faiss-cpu`).
+**Important:** You have to manually install the correct version of faiss for your system (regular installation: `pip install faiss`, CPU-only version: `pip install faiss-cpu`).
 
 ## Dataset
 We included a dataset of almost 500,000 SMILES strings in the `dataset` directory. To speed up the training process, we recommend to use pre-computed fingerprints and similarities. These files can be created as shown below:
@@ -45,9 +45,9 @@ To use the model in a virtual screening task, the scripts in the `screen` direct
 First, encode the database you want to screen into latent space. The database needs to be a set of at least one SMILES file in a single directory. The following command can be used to create the encodings:
 
 ```bash
-python encode.py --checkpoint checkpoint_of_model.pt --vocab vocabulary_of_model.pk --input database/
+python encode.py --checkpoint {checkpoint_of_model}.pt --vocab {vocabulary_of_model}.pk --input database/
 ```
-Where `checkpoint_of_model.pt` is a checkpoint file of a model trained in the above step and `vocabulary_of_model.pk` is the vocabulary created during the training of the same model. `database/` is the path to the directory containing all SMILES files of the compounds that need to be encoded. By default, a new directory called `encoded` will be created that holds all encodings. The complete database will be split into several batches containing a fixed number of compounds (default: 10,000,000, can be changed via command line arguments).
+Where `{checkpoint_of_model}.pt` is a checkpoint file of a model trained in the above step and `{vocabulary_of_model}.pk` is the vocabulary created during the training of the same model. `database/` is the path to the directory containing all SMILES files of the compounds that need to be encoded. By default, a new directory called `encoded` will be created that holds all encodings. The complete database will be split into several batches containing a fixed number of compounds (default: 10,000,000, can be changed via command line arguments).
 
 Finally, to predict the similarities, the following command can be used:
 
